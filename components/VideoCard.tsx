@@ -26,11 +26,17 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isVideoMuted;
+    }
+  }, [isVideoMuted]);
+
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
       <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
         <div className="md:w-16 md:h-16 w-10 h-10">
-          <Link href="/">
+          <Link href={`/profile/${post.postedBy._id}`}>
             <>
               <Image
                 width={62}
@@ -44,7 +50,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           </Link>
         </div>
         <div>
-          <Link href="/">
+          <Link href={`/profile/${post.postedBy._id}`}>
             <div className="flex items-center gap-2">
               <p className="flex gap-2  items-center md:text-md font-bold text-primary">
                 {post.postedBy.userName}
@@ -55,6 +61,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 {post.postedBy.userName}
               </p>
             </div>
+          </Link>
+          <Link href={`/detail/${post._id}`}>
+            <p className="mt-2 font-normal ">{post.caption}</p>
           </Link>
         </div>
       </div>
