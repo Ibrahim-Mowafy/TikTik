@@ -121,7 +121,7 @@ const Upload = () => {
                         Up to 10 minutes <br />
                         Less than 2 GB
                       </p>
-                      <p className="bg-[#F51997] text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none">
+                      <p className="bg-accent text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none">
                         Select file
                       </p>
                     </div>
@@ -135,12 +135,14 @@ const Upload = () => {
                 ) : (
                   <div className=" rounded-3xl w-[300px]  p-4 flex flex-col gap-6 justify-center items-center">
                     <video
-                      className="rounded-xl h-[462px] mt-16 bg-black"
+                      className="rounded-xl h-[462px] bg-black"
                       controls
                       loop
+                      autoPlay
+                      muted
                       src={videoAsset?.url}
                     />
-                    <div className=" flex justify-between gap-20">
+                    {/* <div className=" flex justify-between gap-20">
                       <p className="text-lg">{videoAsset.originalFilename}</p>
                       <button
                         type="button"
@@ -149,7 +151,7 @@ const Upload = () => {
                       >
                         <MdDelete />
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 )}
               </div>
@@ -196,10 +198,10 @@ const Upload = () => {
               Discard
             </button>
             <button
-              disabled={videoAsset?.url ? false : true}
+              disabled={videoAsset?.url && caption ? false : true}
               onClick={handlePost}
               type="button"
-              className="bg-[#F51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
+              className="bg-accent text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none disabled:bg-gray-300"
             >
               {savingPost ? 'Posting...' : 'Post'}
             </button>

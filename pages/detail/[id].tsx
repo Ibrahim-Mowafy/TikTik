@@ -20,7 +20,7 @@ interface IProps {
 
 const Detail = ({ postDetails }: IProps) => {
   const [post, setPost] = useState(postDetails);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isVideoMuted, setIsVideoMuted] = useState<boolean>(false);
   const [isPostingComment, setIsPostingComment] = useState<boolean>(false);
   const [comment, setComment] = useState<string>('');
@@ -76,7 +76,7 @@ const Detail = ({ postDetails }: IProps) => {
   return (
     <>
       {post && (
-        <div className="flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap">
+        <div className="flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap overflow-hidden">
           <div className="relative flex-2 w-[1000px] lg:w-9/12 flex justify-center items-center bg-black">
             <div className="opacity-90 absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
               <p className="cursor-pointer " onClick={() => router.back()}>
@@ -89,6 +89,7 @@ const Detail = ({ postDetails }: IProps) => {
                   ref={videoRef}
                   onClick={onVideoClick}
                   loop
+                  autoPlay
                   src={post?.video?.asset.url}
                   className=" h-full cursor-pointer"
                 ></video>
@@ -135,7 +136,7 @@ const Detail = ({ postDetails }: IProps) => {
                 </div>
               </Link>
               <div className="px-10">
-                <p className=" text-md text-gray-600">{post.caption}</p>
+                <p className="text-xl text-gray-600">{post.caption}</p>
               </div>
               <div className="mt-3 px-10">
                 {userProfile && (

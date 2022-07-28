@@ -21,7 +21,15 @@ const Footer = () => {
       <List items={footerList2} mt />
       <List items={footerList3} mt />
       <p className="text-gray-400 text-sm mt-5 flex justify-center">
-        2022 TikTik By&nbsp;<span className="text-[#ff1994]">H.3M</span>
+        2022 TikTik By&nbsp;
+        <a
+          href="https://www.linkedin.com/in/ibrahim-mowafy/"
+          target="_blank"
+          className="text-accent cursor-pointer "
+          rel="noreferrer"
+        >
+          H.3M
+        </a>
       </p>
     </div>
   );
