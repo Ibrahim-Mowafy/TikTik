@@ -22,6 +22,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:title" content="My page title" key="title" />
+        <meta
+          name="description"
+          content="TikTok - trends start here. On a device or on the web, viewers can watch and discover millions of personalized short videos."
+          key="description"
+        />
       </Head>
       <GoogleOAuthProvider
         clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API_TOKEN}`}
