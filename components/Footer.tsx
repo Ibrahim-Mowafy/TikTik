@@ -25,7 +25,7 @@ const Footer = () => {
         <a
           href="https://www.linkedin.com/in/ibrahim-mowafy/"
           target="_blank"
-          className="text-accent cursor-pointer "
+          className="text-accent cursor-pointer pb-3"
           rel="noreferrer"
         >
           H.3M
