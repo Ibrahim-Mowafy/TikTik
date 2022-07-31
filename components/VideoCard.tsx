@@ -54,7 +54,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
       <div className="flex gap-4 relative flex-col pr-2">
         <div>
           <Link href={`/profile/${post.postedBy._id}`}>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer">
               <p className="flex gap-2  items-center md:text-md font-bold text-primary">
                 {post.postedBy.userName}
 
