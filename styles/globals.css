@@ -18,12 +18,16 @@ a {
   box-sizing: border-box;
 }
 
+input {
+  caret-color: #FF1994;
+}
+
 .videos::-webkit-scrollbar {
   width: 0px;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;  
+  width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {

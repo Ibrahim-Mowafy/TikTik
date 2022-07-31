@@ -127,11 +127,13 @@ const Detail = ({ postDetails }: IProps) => {
                     src={post.postedBy.image}
                   />
                   <div>
-                    <div className="text-xl font-bold lowercase tracking-wider flex gap-2 items-center justify-center">
-                      {post.postedBy.userName.replace(/\s+/g, '')}{' '}
+                    <div className="text-xl font-bold tracking-wider flex gap-2 items-center justify-center">
+                      {post.postedBy.userName}
                       <GoVerified className="text-blue-400 text-xl" />
                     </div>
-                    <p className="text-md text-gray-400"> {post.postedBy.userName}</p>
+                    <p className="text-md text-gray-400">
+                      {post.postedBy.userName.replace(/\s+/g, '')}{' '}
+                    </p>
                   </div>
                 </div>
               </Link>

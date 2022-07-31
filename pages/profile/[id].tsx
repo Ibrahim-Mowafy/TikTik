@@ -45,7 +45,7 @@ const Profile = ({ data }: IProps) => {
             <GoVerified className="text-blue-400" />
           </p>
           <p className="capitalize md:text-xl text-gray-400 text-xs">
-            {user.userName}
+            {user.userName.replace(/\s+/g, '')}
           </p>
         </div>
       </div>
@@ -68,13 +68,15 @@ const Profile = ({ data }: IProps) => {
             Liked
           </p>
         </div>
-        <div className="flex gap-6 flex-wrap md:justify-start">
+        <div className="flex flex-col gap-6 flex-wrap md:justify-start">
           {videosList.length > 0 ? (
             videosList.map((post: Video, index: number) => (
               <VideoCard post={post} key={index} />
             ))
           ) : (
-            <NoResults text={`No ${showUserVideos ? '':'Liked'} Videos Yet`} />
+            <NoResults
+              text={`No ${showUserVideos ? '' : 'Liked'} Videos Yet`}
+            />
           )}
         </div>
       </div>

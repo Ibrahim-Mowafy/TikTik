@@ -37,7 +37,9 @@ const SuggestedAccounts = () => {
                   {user.userName}
                   <GoVerified className="text-blue-400" />
                 </p>
-                <p className='capitalize text-gray-400 text-xs'>{user.userName}</p>
+                <p className="capitalize text-gray-400 text-xs">
+                  {user.userName.replace(/\s+/g, '')}{' '}
+                </p>
               </div>
             </div>
           </Link>
