@@ -85,7 +85,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
       <div
         className="flex gap-4 relative flex-col pr-2"
         //!       issue here in link
-        // onTouchMove={() => setIsHover(true)}
+        onTouchStart={() => setIsHover(true)}
         // onTouchEnd={() => setIsHover(false)}
       >
         <div>
@@ -101,9 +101,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
               </p>
             </div>
           </Link>
-          <Link href={`/detail/${post._id}`}>
-            <p className="mt-2 font-normal">{post.caption}</p>
-          </Link>
+          <p className="mt-2 font-normal max-w-[200px] md:max-w-[250px]">{post.caption}</p>
         </div>
         <div
           onMouseEnter={() => setIsHover(true)}
@@ -114,13 +112,13 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             <video
               ref={videoRef}
               loop
-              className="lg:max-w-[350px] md:max-w-[250px] max-w-[200px] h-full w-full rounded-2xl cursor-pointer bg-black"
+              className="lg:max-w-[350px] md:max-w-[250px] max-w-[200px] min-h-[200px] h-full w-full rounded-2xl cursor-pointer bg-black"
               src={post.video.asset.url}
             ></video>
           </Link>
 
           {isHover && (
-            <div className="absolute lg:max-w-[350px] md:max-w-[250px] max-w-[200px] bottom-8 px-8 cursor-pointer flex justify-between w-full">
+            <div className="absolute lg:max-w-[350px] md:max-w-[250px] max-w-[200px] bottom-8 px-2 md:px-8 cursor-pointer flex justify-between w-full">
               {playing ? (
                 <button onClick={onVideoPres}>
                   <BsFillPauseFill className="text-white lg:text-3xl text-2xl" />
@@ -160,20 +158,18 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           >
             <FaCommentDots className="text-lg md:text-2xl" />
           </div>
-          <div className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors">
+          <div
+            className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors"
+            onClick={() => {
+              setCoping(true);
+              navigator.clipboard.writeText(`${BASE_URL}/detail/${post._id}`);
+              setTimeout(() => {
+                setCoping(false);
+              }, 1000);
+            }}
+          >
             {!coping ? (
-              <BiLink
-                className={`text-lg md:text-2xl transition-transform`}
-                onClick={() => {
-                  setCoping(true);
-                  navigator.clipboard.writeText(
-                    `${BASE_URL}/detail/${post._id}`
-                  );
-                  setTimeout(() => {
-                    setCoping(false);
-                  }, 1000);
-                }}
-              />
+              <BiLink className={`text-lg md:text-2xl transition-transform`} />
             ) : (
               <FcCheckmark className={`text-lg md:text-2xl`} />
             )}
