@@ -101,7 +101,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
               </p>
             </div>
           </Link>
-          <p className="mt-2 font-normal max-w-[200px] md:max-w-[250px]">{post.caption}</p>
+          <p className="mt-2 font-normal max-w-[200px] md:max-w-[250px]">
+            {post.caption}
+          </p>
         </div>
         <div
           onMouseEnter={() => setIsHover(true)}
@@ -162,7 +164,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors"
             onClick={() => {
               setCoping(true);
-              navigator.clipboard.writeText(`${BASE_URL}/detail/${post._id}`);
+              navigator.clipboard.writeText(
+                `${BASE_URL}/detail/${post._id}?copy=true`
+              );
               setTimeout(() => {
                 setCoping(false);
               }, 1000);
