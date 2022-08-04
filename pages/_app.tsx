@@ -48,13 +48,3 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 };
 
 export default MyApp;
-
-//*                <-- My Plane -->
-//// upload content with data and post caption from tiktok
-//// handle x button in sidebar with responsive
-//* handle responsive in search bar
-//* handle video card layout
-//// handle responsive play and mute button in video
-//// styling post caption
-//* handle auto play video when scrolled into View
-//* add fav.ico icon to website
