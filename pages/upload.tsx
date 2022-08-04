@@ -9,7 +9,7 @@ import useAuthStore from '../store/authStore';
 import { BASE_URL } from '../utils';
 import { client } from '../utils/client';
 import { topics } from '../utils/constants';
-import Spinner from '../components/spinner/Spinner';
+import Spinner from '../components/Spinner/Spinner';
 
 const Upload = () => {
   const [caption, setCaption] = useState('');

@@ -10,12 +10,10 @@ import LikeButton from './LikeButton';
 import { BASE_URL } from '../utils';
 import axios from 'axios';
 import useAuthStore from '../store/authStore';
-import { FaCheck, FaCommentDots } from 'react-icons/fa';
+import { FaCommentDots } from 'react-icons/fa';
 import { BiLink } from 'react-icons/bi';
-import { FaLink } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { IoMdShareAlt } from 'react-icons/io';
-import { RiShareForwardFill } from 'react-icons/ri';
+
 import { FcCheckmark } from 'react-icons/fc';
 
 interface IProps {
@@ -153,12 +151,17 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             />
           </div>
           <div
-            className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors"
+          className='flex flex-col justify-center items-center'
             onClick={() => {
               router.push(`/detail/${post._id}`);
             }}
           >
-            <FaCommentDots className="text-lg md:text-2xl" />
+            <div className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors">
+              <FaCommentDots className="text-lg md:text-2xl" />
+            </div>
+              <p className="text-md font-semibold ">
+                {post.comments?.length || 0}
+              </p>
           </div>
           <div
             className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors"
