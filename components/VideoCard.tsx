@@ -15,12 +15,14 @@ import { BiLink } from 'react-icons/bi';
 import { useRouter } from 'next/router';
 
 import { FcCheckmark } from 'react-icons/fc';
+import Spinner from './spinner/Spinner';
 
 interface IProps {
   post: Video;
 }
 
 const VideoCard: NextPage<IProps> = ({ post }) => {
+  const [isLoadingVideo, setIsLoadingVideo] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
@@ -108,12 +110,23 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           onMouseLeave={() => setIsHover(false)}
           className="rounded-3xl relative flex gap-3"
         >
+          {isLoadingVideo && (
+            <div className='absolute flex justify-center items-center w-full h-full'>
+              <Spinner />
+            </div>
+          )}
           <Link href={`/detail/${post._id}`}>
             <video
               ref={videoRef}
               loop
               className="lg:max-w-[350px] md:max-w-[250px] max-w-[200px] min-h-[200px] h-full w-full rounded-2xl cursor-pointer bg-black"
               src={post.video.asset.url}
+              onLoadStart={() => {
+                setIsLoadingVideo(true);
+              }}
+              onLoadedData={() => {
+                setIsLoadingVideo(false);
+              }}
             ></video>
           </Link>
 
@@ -151,7 +164,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             />
           </div>
           <div
-          className='flex flex-col justify-center items-center'
+            className="flex flex-col justify-center items-center"
             onClick={() => {
               router.push(`/detail/${post._id}`);
             }}
@@ -159,9 +172,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             <div className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors">
               <FaCommentDots className="text-lg md:text-2xl" />
             </div>
-              <p className="text-md font-semibold ">
-                {post.comments?.length || 0}
-              </p>
+            <p className="text-md font-semibold ">
+              {post.comments?.length || 0}
+            </p>
           </div>
           <div
             className="bg-primary rounded-full p-2 md:p-4 cursor-pointer hover:bg-gray-200 transition-colors"

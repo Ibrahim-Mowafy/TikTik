@@ -13,12 +13,14 @@ import LikeButton from '../../components/LikeButton';
 import useAuthStore from '../../store/authStore';
 import { Video } from '../../types';
 import axios from 'axios';
+import Spinner from '../../components/spinner/Spinner';
 
 interface IProps {
   postDetails: Video;
 }
 
 const Detail = ({ postDetails }: IProps) => {
+  const [isLoadingVideo, setIsLoadingVideo] = useState(false);
   const [post, setPost] = useState(postDetails);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isVideoMuted, setIsVideoMuted] = useState<boolean>(false);
@@ -92,6 +94,11 @@ const Detail = ({ postDetails }: IProps) => {
             </div>
             <div className="relative">
               <div className="lg:h-[100vh] h-[60vh]">
+                {isLoadingVideo && (
+                  <div className="absolute flex justify-center items-center w-full h-full">
+                    <Spinner />
+                  </div>
+                )}
                 <video
                   ref={videoRef}
                   onClick={onVideoClick}
@@ -99,6 +106,12 @@ const Detail = ({ postDetails }: IProps) => {
                   autoPlay
                   src={post?.video?.asset.url}
                   className=" h-full cursor-pointer"
+                  onLoadStart={() => {
+                    setIsLoadingVideo(true);
+                  }}
+                  onLoadedData={() => {
+                    setIsLoadingVideo(false);
+                  }}
                 ></video>
               </div>
 
