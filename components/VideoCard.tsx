@@ -101,7 +101,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
               </p>
             </div>
           </Link>
-          <p className="mt-2 font-normal max-w-[200px] md:max-w-[250px]">
+          <p className="lg:max-w-[350px] mt-2 font-normal md:max-w-[250px] max-w-[200px]  `">
             {post.caption}
           </p>
         </div>
