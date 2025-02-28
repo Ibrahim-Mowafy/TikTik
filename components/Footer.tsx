@@ -23,7 +23,7 @@ const Footer = () => {
       <p className="text-gray-400 text-sm mt-5 flex justify-center">
         2022 TikTik By&nbsp;
         <a
-          href="https://www.linkedin.com/in/ibrahim-mowafy/"
+          href="https://www.linkedin.com/in/ibrahimmowafy/"
           target="_blank"
           className="text-accent cursor-pointer pb-3"
           rel="noreferrer"
